@@ -1,12 +1,23 @@
 $(document).ready(function() {
+  //one method for the button click
   $("#search-button").on("click", function() {
-    var searchValue = $("#search-value").val();
+    search();
+  });
+  //one method for using the enter key
+  var wage = document.getElementById("search-value");
+  wage.addEventListener("keydown", function (e) {
+      if (e.keyCode === 13) {  //checks whether the pressed key is "Enter"
+         search();
+      }
+  });
 
+  function search(){
+    var searchValue = $("#search-value").val();
     // clear input box
     $("#search-value").val("");
-
     searchWeather(searchValue);
-  });
+  }
+
 
   $(".history").on("click", "li", function() {
     searchWeather($(this).text());
